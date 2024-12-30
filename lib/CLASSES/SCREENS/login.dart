@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/API/repository.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/API/service.dart';
@@ -16,11 +17,11 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   late final TextEditingController contEmail;
   late final TextEditingController contPassword;
-  late final ApiRepository apiRepository;
+  final ApiService apiService = ApiService();
 
   @override
   void initState() {
-    apiRepository = ApiRepository(apiService: ApiService());
+    // apiRepository = ApiRepository(apiService: ApiService());
     contEmail = TextEditingController();
     contPassword = TextEditingController();
     super.initState();
@@ -34,29 +35,44 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  Future<dynamic> loginWB() async {
-    try {
-      // final loginResponse = await loginre
+  Future<void> loginWB() async {
+    setState(() {
+      // isLoading = true;
+    });
 
-      // customLog(loginResponse);
-      // if (userProfile != null) {
-      //   setState(() {
-      //     _userProfile = userProfile;
-      //     screenLoader = false;
-      //     userNameShimmer = false;
-      //     controller.text = loginUserName();
-      //   });
-      // } else {
-      //   setState(() {
-      //     errorMessage = 'User profile not found';
-      //     screenLoader = false;
-      //   });
-      // }
+    String email = contEmail.text;
+    String password = contPassword.text;
+    String deviceToken = '111111111111111111111';
+    String action = AppResources.action.actionLogin;
+
+    try {
+      final response = await apiService.loginService(
+        email,
+        password,
+        deviceToken,
+        action,
+      );
+      if (kDebugMode) {
+        print("UI: Response received: $response");
+      }
+
+      if (response['success'] == true) {
+        if (kDebugMode) {
+          print("UI: Login Successful");
+        }
+        // Handle successful login
+      } else {
+        // _showErrorDialog(response['alertMessage'] ?? 'Login failed');
+      }
     } catch (e) {
-      // setState(() {
-      //   errorMessage = 'Error fetching user profile: $e';
-      //   screenLoader = false;
-      // });
+      if (kDebugMode) {
+        print("UI: Error occurred: $e");
+      }
+      // _showErrorDialog(e.toString());
+    } finally {
+      setState(() {
+        // isLoading = false;
+      });
     }
   }
 
@@ -146,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: Colors.white,
                 ),
                 onPressed: () {
-                  customLog('Button Pressed!');
+                  customLog('Button Pressed 2');
                   loginWB();
                 },
               ),
