@@ -1,3 +1,7 @@
+class Action {
+  String actionLogin = 'login';
+}
+
 class EndPoints {
   // users
   String addCheckUser = 'user_exist.php';
