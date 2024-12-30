@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ritevet_dart/CLASSES/SCREENS/login.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:trust_travel/classes/structure/BLOC/screens/feeds/main_file.dart';
@@ -130,12 +131,12 @@ class _SplashScreenState extends State<SplashScreen> {
         if (kDebugMode) {
           print('User is currently signed out!');
         }
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => const PresentingScreen(),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LoginScreen(),
+          ),
+        );
       } else {
         if (kDebugMode) {
           print('User is signed in!');

@@ -73,8 +73,6 @@ void main() async {
       ),
     ),
   );
-
-  // runApp(const MyApp());
 }
 
 Future _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -82,32 +80,3 @@ Future _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     print("Handling a background message: ${message.messageId}");
   }
 }
-
-/*class ThemeNotifier with ChangeNotifier {
-  bool _isDarkMode = false;
-
-  bool get isDarkMode => _isDarkMode;
-
-  void toggleTheme() {
-    _isDarkMode = !_isDarkMode;
-    notifyListeners();
-  }
-}*/
- /*ChangeNotifierProvider(
-      create: (_) => ThemeNotifier(),
-      child: Consumer<ThemeNotifier>(
-        builder: (context, themeNotifier, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: themeNotifier.currentTheme,
-            home: const SplashScreen(),
-          );
-        },
-      ),
-    ),*/
-      /*const MaterialApp(
-      //
-      debugShowCheckedModeBanner: false,
-      // home: OnboardingScreen(),
-      home: SplashScreen(),
-),*/
