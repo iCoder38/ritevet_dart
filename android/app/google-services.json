@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "214731614603",
+    "firebase_url": "https://bert-alert-free.firebaseio.com",
+    "project_id": "bert-alert-free",
+    "storage_bucket": "bert-alert-free.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214731614603:android:8d810de252edf3957c278e",
+        "android_client_info": {
+          "package_name": "com.evs1.bertalert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214731614603-3hm66sj1rr0jidvqr4h4gg2vk6iphkuo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.evs1.bertalert",
+            "certificate_hash": "881da1781a88a4d026cf06f7fb289266a88b53b0"
+          }
+        },
+        {
+          "client_id": "214731614603-kenfcglq8kbki4q89cnnmsne8gnkmm6c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.evs1.bertalert",
+            "certificate_hash": "81da7eada8ef8af6bbdd84465deac66ce0f6aad9"
+          }
+        },
+        {
+          "client_id": "214731614603-99u1slsp110k7r3oopk0jk14b4dvb3s5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAntA0RTOY4P5TbHcg7kYORrAVe4ACUVps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214731614603-99u1slsp110k7r3oopk0jk14b4dvb3s5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "214731614603-2eks2aon6v3jcpaljf6q69sqidit9ieh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.evs.bertalert3"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214731614603:android:567b7f4a6df6b7c37c278e",
+        "android_client_info": {
+          "package_name": "com.ritevet.dart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214731614603-99u1slsp110k7r3oopk0jk14b4dvb3s5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAntA0RTOY4P5TbHcg7kYORrAVe4ACUVps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214731614603-99u1slsp110k7r3oopk0jk14b4dvb3s5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "214731614603-2eks2aon6v3jcpaljf6q69sqidit9ieh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.evs.bertalert3"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

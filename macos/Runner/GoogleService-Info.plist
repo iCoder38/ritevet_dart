@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>214731614603-3hm66sj1rr0jidvqr4h4gg2vk6iphkuo.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAykcAuucvJ_UvhJbwLz0-vkhhf5lxamPs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>214731614603</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.ritevetDart</string>
+	<key>PROJECT_ID</key>
+	<string>bert-alert-free</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bert-alert-free.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:214731614603:ios:1c5a76507b9440da7c278e</string>
+	<key>DATABASE_URL</key>
+	<string>https://bert-alert-free.firebaseio.com</string>
+</dict>
+</plist>
