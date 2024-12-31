@@ -11,7 +11,7 @@ String BG_IMAGE = "assets/images/bg.png";
 String LOGO_1000 = "assets/images/logo_1000.png";
 
 // SVG
-var svgPath = 'assets/images/svg';
+var svgPath = 'assets/svg';
 var svgPathRecharge = 'assets/images/recharge';
 var formatSVG = 'svg';
 Widget svgImage(imageName, height, width, {ColorFilter? colorFilter}) {
@@ -185,6 +185,8 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
   final bool secureText;
+  final bool readOnly;
+  final VoidCallback? onTap;
 
   const CustomTextField({
     Key? key,
@@ -194,6 +196,8 @@ class CustomTextField extends StatelessWidget {
     this.validator,
     this.keyboardType,
     this.secureText = false,
+    this.readOnly = false,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -210,6 +214,8 @@ class CustomTextField extends StatelessWidget {
           obscureText: secureText,
           controller: controller,
           keyboardType: keyboardType,
+          readOnly: readOnly,
+          onTap: onTap,
           decoration: InputDecoration(
             labelText: labelText,
             suffixIcon: suffixIcon,
@@ -237,6 +243,7 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final double? width;
   final Color? color;
+  final Color? textColor;
   final double borderRadius;
   final TextStyle? textStyle;
   final VoidCallback? onPressed;
@@ -247,6 +254,7 @@ class CustomButton extends StatelessWidget {
     this.height,
     this.width,
     this.color,
+    this.textColor,
     this.borderRadius = 12.0,
     this.textStyle,
     this.onPressed,
@@ -259,21 +267,20 @@ class CustomButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: 14.0, left: 14.0, top: 8.0),
         child: Container(
-          height: height,
+          height: height ?? 60,
           width: width ?? double.infinity,
           decoration: BoxDecoration(
             color: color ?? Colors.transparent, // Default color is blue
             borderRadius: BorderRadius.circular(borderRadius),
           ),
           alignment: Alignment.center,
-          child: Text(
+          child: customText(
             text,
-            style: textStyle ??
-                TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white, // Default text color
-                ),
+            18.0,
+            context,
+            fontWeight: FontWeight.w600,
+            lightModeColor:
+                textColor ?? hexToColor(AppResources.hexColor.blackColor),
           ),
         ),
       ),

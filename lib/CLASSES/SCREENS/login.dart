@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:ritevet_dart/CLASSES/SCREENS/registration.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/API/repository.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/API/service.dart';
 // import 'package:flutter/services.dart';
@@ -137,10 +138,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: contEmail,
                 keyboardType: TextInputType.emailAddress,
                 labelText: 'Email',
-                suffixIcon: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: svgImage('email', 14.0, 14.0),
-                ),
+                // suffixIcon: Padding(
+                //   padding: const EdgeInsets.all(16.0),
+                //   child: svgImage('email', 14.0, 14.0),
+                // ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Enter email';
@@ -152,10 +153,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 secureText: true,
                 controller: contPassword,
                 labelText: 'Password',
-                suffixIcon: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: svgImage('email', 14.0, 14.0),
-                ),
+                // suffixIcon: Padding(
+                //   padding: const EdgeInsets.all(16.0),
+                //   child: svgImage('email', 14.0, 14.0),
+                // ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Enter password';
@@ -168,6 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 60,
                 width: double.infinity,
                 color: AppResources.colors.appBackgroundColor,
+                textColor: hexToColor(AppResources.hexColor.whiteColor),
                 borderRadius: 20.0,
                 textStyle: TextStyle(
                   fontSize: 18.0,
@@ -207,6 +209,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onPressed: () {
                   customLog("Clicked: Don't have an account? Sign up");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RegsitrationScreen(),
+                    ),
+                  );
                 },
               ),
             ],

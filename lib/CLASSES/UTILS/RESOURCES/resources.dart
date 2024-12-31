@@ -7,7 +7,6 @@ class AppResources {
   static final AppColors colors = AppColors();
   static final AppHexColor hexColor = AppHexColor();
   static final SetText text = SetText();
-  static final EndPoints endPoints = EndPoints();
   static final Action action = Action();
   static final AppSvgImages svgImages = AppSvgImages();
   // static final SetKeysForNotification notificationKeys =
