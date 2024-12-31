@@ -7,6 +7,15 @@ class SetText {
   String forgotPassword = 'Forgot password';
   String dontHaveAnAccount = "Don't have an account? Sign up";
 
+  // alerts
+  String textPleaseWait = 'Please wait';
+
+  // http response
+  String textSuccess = 'success';
+
+  // save data
+  String textSaveLoginResponseKey = 'keySaveLoginResponse';
+
   /*final aboutLocationPrompt = AppText().aboutLocationPrompt;
 
   final details = AppText().details;

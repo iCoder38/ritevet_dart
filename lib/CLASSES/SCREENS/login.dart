@@ -1,10 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/API/repository.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/API/service.dart';
 // import 'package:flutter/services.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/RESOURCES/resources.dart';
+import 'package:ritevet_dart/CLASSES/UTILS/alerts.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/common.dart';
+import 'package:ritevet_dart/CLASSES/UTILS/methods.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/utils.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -35,10 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  Future<void> loginWB() async {
-    setState(() {
-      // isLoading = true;
-    });
+  Future<void> loginWB(context) async {
+    showLoadingUI(context, AppResources.text.textPleaseWait);
 
     String email = contEmail.text;
     String password = contPassword.text;
@@ -52,27 +55,37 @@ class _LoginScreenState extends State<LoginScreen> {
         deviceToken,
         action,
       );
-      if (kDebugMode) {
-        print("UI: Response received: $response");
-      }
+      // if (kDebugMode) {
+      //   print("UI: Response received: $response");
+      // }
+      customLog(response);
 
-      if (response['success'] == true) {
+      if (response['status'].toString() == AppResources.text.textSuccess) {
         if (kDebugMode) {
           print("UI: Login Successful");
         }
-        // Handle successful login
+        // store data securely
+        final storage = FlutterSecureStorage();
+        String jsonString = jsonEncode(response);
+        await storage.write(
+          key: AppResources.text.textSaveLoginResponseKey,
+          value: jsonString,
+        );
+
+        dismissAlert(context);
       } else {
-        // _showErrorDialog(response['alertMessage'] ?? 'Login failed');
+        customLog(response['status'].toString());
+        dismissAlert(context);
+        showExceptionPopup(context, response['msg'].toString());
       }
     } catch (e) {
       if (kDebugMode) {
         print("UI: Error occurred: $e");
       }
-      // _showErrorDialog(e.toString());
+      dismissAlert(context);
+      showExceptionPopup(context, e.toString());
     } finally {
-      setState(() {
-        // isLoading = false;
-      });
+      customLog('Finally');
     }
   }
 
@@ -163,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 onPressed: () {
                   customLog('Button Pressed 2');
-                  loginWB();
+                  loginWB(context);
                 },
               ),
               CustomButton(

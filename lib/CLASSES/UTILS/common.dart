@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +24,24 @@ Widget svgImage(imageName, height, width, {ColorFilter? colorFilter}) {
   );
 }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////// THEME
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+Color getAppThemeColor(BuildContext context) {
+  final isDarkMode =
+      Provider.of<ThemeNotifier>(context, listen: true).isDarkMode;
+  return isDarkMode
+      ? AppResources.colors.appDarkModeBackgroundColor
+      : AppResources.colors.appLightModeBackgroundColor;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////// HEX TO COLOR
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 Color hexToColor(String hexString) {
   hexString = hexString.replaceAll('#', '');
   if (hexString.length == 6) {
@@ -260,4 +279,87 @@ class CustomButton extends StatelessWidget {
       ),
     );
   }
+}
+
+// SPINKIT
+Widget getSpinKitWidget(
+  SpinKitIndicatorType type, {
+  Color? color,
+  double? size,
+}) {
+  final effectiveColor = hexToColor(AppResources.hexColor.midOrange);
+  final effectiveSize = size ?? 50.0; // Default size if `size` is null
+
+  switch (type) {
+    case SpinKitIndicatorType.rotatingCircle:
+      return SpinKitRotatingCircle(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.rotatingPlain:
+      return SpinKitRotatingPlain(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.pulse:
+      return SpinKitPulse(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.doubleBounce:
+      return SpinKitDoubleBounce(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.fadingCircle:
+      return SpinKitFadingCircle(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.fadingFour:
+      return SpinKitFadingFour(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.fadingGrid:
+      return SpinKitFadingGrid(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.wave:
+      return SpinKitWave(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.threeBounce:
+      return SpinKitThreeBounce(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.chasingDots:
+      return SpinKitChasingDots(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.wanderingCubes:
+      return SpinKitWanderingCubes(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.circle:
+      return SpinKitCircle(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.cubeGrid:
+      return SpinKitCubeGrid(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.fadingCube:
+      return SpinKitFadingCube(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.foldingCube:
+      return SpinKitFoldingCube(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.pumpingHeart:
+      return SpinKitPumpingHeart(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.squareCircle:
+      return SpinKitSquareCircle(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.ripple:
+      return SpinKitRipple(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.ring:
+      return SpinKitRing(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.hourGlass:
+      return SpinKitHourGlass(color: effectiveColor, size: effectiveSize);
+    case SpinKitIndicatorType.dancingSquare:
+      return SpinKitDancingSquare(color: effectiveColor, size: effectiveSize);
+    default:
+      return SpinKitCircle(
+          color: effectiveColor, size: effectiveSize); // Default option
+  }
+}
+
+// Enum to define SpinKit types
+enum SpinKitIndicatorType {
+  rotatingCircle,
+  rotatingPlain,
+  pulse,
+  doubleBounce,
+  fadingCircle,
+  fadingFour,
+  fadingGrid,
+  wave,
+  threeBounce,
+  chasingDots,
+  wanderingCubes,
+  circle,
+  cubeGrid,
+  fadingCube,
+  foldingCube,
+  pumpingHeart,
+  squareCircle,
+  ripple,
+  ring,
+  hourGlass,
+  dancingSquare,
 }
