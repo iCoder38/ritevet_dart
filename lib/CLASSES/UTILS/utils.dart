@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/web.dart';
+import 'package:shimmer/shimmer.dart';
 
 var BASE_URL = dotenv.env['API_BASE_URL'].toString();
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,6 +22,28 @@ void customLog(dynamic message) {
     // print(message);
     logger.d(message);
   }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+//////////////////// SHIMMER'S
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+ShimmerLoader(
+    {required double width,
+    double? height,
+    Color? color,
+    Decoration? decoration}) {
+  return Shimmer.fromColors(
+    baseColor: Colors.grey[300]!,
+    highlightColor: Colors.grey[100]!,
+    child: Container(
+      decoration: decoration,
+      width: width,
+      height: height ?? 10,
+      color: color ?? Colors.white,
+    ),
+  );
 }
 
 ////////////////////////////////////////////////////////////////////////////////

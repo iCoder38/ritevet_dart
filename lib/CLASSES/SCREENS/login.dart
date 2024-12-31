@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:ritevet_dart/CLASSES/SCREENS/dashboard.dart';
 import 'package:ritevet_dart/CLASSES/SCREENS/registration.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/API/repository.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/API/service.dart';
@@ -74,6 +75,12 @@ class _LoginScreenState extends State<LoginScreen> {
         );
 
         dismissAlert(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DashboardScreen(),
+          ),
+        );
       } else {
         customLog(response['status'].toString());
         dismissAlert(context);
