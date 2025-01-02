@@ -234,4 +234,54 @@ class ApiService {
       };
     }
   }
+
+// action:petparentregistration
+// userId:1
+// UTYPE:1
+// VFirstName:
+// VLastName:
+  Future<Map<String, dynamic>> RegisterAsPetParentService(
+    String action,
+    String userId,
+    String UTYPE,
+    String VFirstName,
+    String VLastName,
+  ) async {
+    try {
+      final response = await http.post(
+        Uri.parse(BASE_URL),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: {
+          'action': action,
+          'userId': userId.toString(),
+          'UTYPE': UTYPE.toString(),
+          'VFirstName': VFirstName.toString(),
+          'VLastName': VLastName.toString(),
+        },
+      );
+
+      if (kDebugMode) {
+        print("Service: HTTP response status: ${response.statusCode}");
+      }
+
+      if (response.statusCode == 200) {
+        return json.decode(response.body); // Parse and return JSON response
+      } else {
+        return {
+          'success': false,
+          'alertMessage': 'Error: ${response.statusCode}',
+        };
+      }
+    } catch (error) {
+      if (kDebugMode) {
+        print("Service: Error occurred: $error");
+      }
+      return {
+        'success': false,
+        'alertMessage': 'Error occurred: $error',
+      };
+    }
+  }
 }

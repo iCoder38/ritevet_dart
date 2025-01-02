@@ -318,3 +318,128 @@ Future<String?> genderPopup(BuildContext context, String message) async {
     },
   );
 }
+
+// PET PARENT ALERT
+Future<void> showPetParentPopup({
+  required BuildContext context,
+  required String message,
+  VoidCallback? onOk,
+  VoidCallback? onDismiss,
+}) async {
+  await showDialog(
+    barrierDismissible: true,
+    context: context,
+    builder: (BuildContext context) {
+      return Material(
+        type: MaterialType.transparency,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(14.0),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      width: 140,
+                      child: Image.asset(
+                        'assets/images/pet_parent_unlock.png',
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Center(
+                        child: customText(
+                          message,
+                          18.0,
+                          context,
+                          darkModeColor:
+                              hexToColor(AppResources.hexColor.blackColor),
+                          lightModeColor:
+                              hexToColor(AppResources.hexColor.blackColor),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 6.0),
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        if (onOk != null) {
+                          onOk();
+                        }
+                      },
+                      child: Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Center(
+                          child: customText(
+                            'Dismiss',
+                            18.0,
+                            context,
+                            fontWeight: FontWeight.w800,
+                            darkModeColor:
+                                hexToColor(AppResources.hexColor.whiteColor),
+                            lightModeColor:
+                                hexToColor(AppResources.hexColor.whiteColor),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        if (onDismiss != null) {
+                          onDismiss();
+                        }
+                      },
+                      child: Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: AppResources.colors.appNavigationColor,
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Center(
+                          child: customText(
+                            AppResources.text.textRegister,
+                            18.0,
+                            context,
+                            fontWeight: FontWeight.w800,
+                            darkModeColor:
+                                hexToColor(AppResources.hexColor.whiteColor),
+                            lightModeColor:
+                                hexToColor(AppResources.hexColor.whiteColor),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}

@@ -14,4 +14,7 @@ class SetText {
 
   // save data
   String textSaveLoginResponseKey = 'keySaveLoginResponse';
+
+  // dashboard
+  String textRegister = 'Register';
 }

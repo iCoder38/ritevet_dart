@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/RESOURCES/resources.dart';
+import 'package:ritevet_dart/CLASSES/UTILS/alerts.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/common.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/drawer.dart';
 import 'package:ritevet_dart/CLASSES/UTILS/utils.dart';
@@ -46,7 +48,73 @@ class _DashboardScreenState extends State<DashboardScreen> {
           fit: BoxFit.cover,
         ),
       ),
-      // child: _UIKit(),
+      child: Column(
+        children: [
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                showPetParentPopup(
+                  context: context,
+                  message:
+                      'Do you want to register as a Pet Parent in the app?',
+                  onOk: () {
+                    // Code to execute on "Ok"
+                    customLog('Ok button pressed');
+                  },
+                  onDismiss: () {
+                    // Code to execute on "Dismiss"
+                    customLog('Register button pressed');
+                  },
+                );
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                color: Colors.transparent,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        color: Colors.transparent,
+                        child: SizedBox(
+                          child: Image.asset(
+                            'assets/images/pet_parent_unlock.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        color: Colors.transparent,
+                        child: SizedBox(
+                          child: Image.asset(
+                            'assets/images/veterinarian_unlock.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              color: const Color.fromARGB(255, 200, 71, 24),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              color: Colors.brown,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
